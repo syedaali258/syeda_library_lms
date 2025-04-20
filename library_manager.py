@@ -96,9 +96,17 @@ def load_library():
             st.session_state.library = json.load(file)
 
 # Save Library to File
-def save_library():
-    with open('library.json', 'w') as file:
-        json.dump(st.session_state.library, file)
+import os
+
+def load_library():
+    if os.path.exists("library.json"):
+        with open("library.json", "r") as file:
+            try:
+                st.session_state.library = json.load(file)
+            except json.JSONDecodeError:
+                st.session_state.library = []  
+    else:
+        st.session_state.library = []  
 
 # Add Book
 def add_book(title, author, publication_year, genre, read_status):
