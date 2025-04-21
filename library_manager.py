@@ -27,12 +27,12 @@ st.markdown("""
             font-weight:700;
             margin-bottom: 1rem;
             text-align: center;
-            text shadow:2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow:2px 2px 4px rgba(0,0,0,0.1);
 
     }
     .sub_header {
             font-size:1.8rem !important;
-            color:3B82F6;
+            color:#3B82F6;
             font-weight: 600;
             margin-top:  1rem;
             margin-bottom: 1rem;
@@ -51,10 +51,10 @@ st.markdown("""
             padding: 1rem;
             margin_bottom: 1rem;
             border-left: 5px solid  #3B82F6;
-            transition: 0.3sec ease;
+            transition: 0.3s ease;
     }
     
-    .book-card-hover:{
+    .book-card-hover {
         transform: translatey(-5px)
         box-shadow: 0  10px 15px -3px rgba(0,0,0,0.1) ;
     }
@@ -85,7 +85,7 @@ st.markdown("""
             border-radius:0.375rem;
     }
 </style>
-"""), unsafe_allow_html=True
+""", unsafe_allow_html=True)
 
 def load_lottieurl(url) :
     try:
