@@ -15,7 +15,7 @@ st.set_page_config(
     page_title="personal Library Management",
     page_icon="🕮",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
 )
 
 #custom CSS for styling
@@ -133,12 +133,12 @@ def save_library():
 #add a book to library
 def add_book(title,author,publication_year,genre,read_status):
     book = {
-        'title':title,
-        'author':author,
-        'publication_year': publication_year,
-        'genre': genre,
-        'read_status': read_status,
-        'added_date': datetime.datetime.now().strftime("%y-%m-%d %H:%M:%S")
+        "title":title,
+        "author":author,
+        "publication_year": publication_year,
+        "genre": genre,
+        "read_status": read_status,
+        "added_date": datetime.datetime.now().strftime("%y-%m-%d %H:%M:%S")
     }
     st.session_state.library.append(book)
     save_library()
@@ -218,7 +218,7 @@ def create_visulations(stats):
     if stats['total_books'] > 0:
         fig_read_status = go.figure(data=[go.pie(
             labels=['Read' , 'Unread'],
-            values=[stats['raed_books'], stats['total_books'] - stats['read_books']],
+            values=[stats['read_books'], stats['total_books'] - stats['read_books']],
             hole=.4,
             marker_colors=['#10B981' , '#F87171']
         )])
@@ -270,7 +270,7 @@ def create_visulations(stats):
        
        #load library
 load_library()
-st.sidebar.markdown("h1 style='text-align: center;'> Navigation</h1>", unsafe_allow_html=True)
+st.sidebar.markdown("h1 style='text-align: center;'> Navigation</h1>"), unsafe_allow_html=True
 lottie_book = load_lottieurl("https://assests9.lottieflies.com/temp/1f20_akAfIn.json")
 if lottie_book:
     with st.sidebar:
@@ -289,9 +289,9 @@ elif nav_options == "Search Books":
 elif nav_options == "Library Statistics":
     st.session_state.current_view = "stats"
 
-st.markdown("<h1 class='main-header'> Personal Libraray Manager </h1>)", unsafe_allow_html=True)
+st.markdown("<h1 class='main-header'> Personal Libraray Manager </h1>"), unsafe_allow_html=True
 if st.session_state.current_view == "add":
-    st.markdown("<h2 class='sub-header'>  Add a New Book</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 class='sub-header'>  Add a New Book</h2>"), unsafe_allow_html=True
 
     #adding books input form
     with st.form(key='add_form_book'):
@@ -314,14 +314,14 @@ if st.session_state.current_view == "add":
             add_book(title,author,publication_year,genre,read_bool)
 
     if st.session_state.book_added:
-        st.markdown("<div class='success-message'> Book added successfully!</div>", unsafe_allow_html=True)
+        st.markdown("<div class='success-message'> Book added successfully!</div>"), unsafe_allow_html=True
         st.balloons()
         st.session_state.book_added = False
-    elif st.session_state.current_view == "Libraray":
-        st.markdown("<h2 class='sub-header'> Your Library</h2>", unsafe_allow_html=True)
+    elif st.session_state.current_view == "Library":
+        st.markdown("<h2 class='sub-header'> Your Library</h2>"), unsafe_allow_html=True
 
         if not st.session_state.library:
-            st.markdown("<div class='warning-message'> Your library is empty. Add some books to get started</div>", unsafe_allow_html=True)
+            st.markdown("<div class='warning-message'> Your library is empty. Add some books to get started</div>"), unsafe_allow_html=True
         else:
             cols = st.columns(2)
             for i , book in enumerate(st.session_state.library):
@@ -340,7 +340,7 @@ if st.session_state.current_view == "add":
                     col1, col2 = st.columns(2)
                     with col1:
                         if st.button(f"Remove", key=f"remove_{i}", use_container_width=True):
-                            if remove_book(i):
+                            if remove_books(i):
                                 st.rerun()
                     with col2:
                         new_status = not book['read-status']
@@ -350,10 +350,10 @@ if st.session_state.current_view == "add":
                             save_library()
                             st.rerun()
         if st.session_state.book_removed:
-            st.markdown("div class='success-message'> Book removed successfully!</div>", unsafe_allow_html=True)
+            st.markdown("div class='success-message'> Book removed successfully!</div>"), unsafe_allow_html=True
             st.session_state.book_removed = False
         elif st.session_state.current_view == "search":
-            st.mardown("<h2 class='sub-header'> search books</h2>", unsafe_allow_html=True)
+            st.mardown("<h2 class='sub-header'> search books</h2>"), unsafe_allow_html=True
 
             search_by = st.selectbox("search by:", ["Title", "Author", "Genre"])
             search_term = st.text_input("Enter search term:")
@@ -365,7 +365,7 @@ if st.session_state.current_view == "add":
                         search_books(search_term, search_by)
             if hasattr(st.session_state, 'search_resulst'):
                 if st.session_state.search_results:
-                    st.markdown(f"<h3> Found{len(st.session_state.search_results)} results</h3>", unsafe_allow_html=True)
+                    st.markdown(f"<h3> Found{len(st.session_state.search_results)} results</h3>"), unsafe_allow_html=True
 
                     for i, book in enumerate(st.session_state.search_results):
                         st.markdown(f"""
@@ -380,13 +380,13 @@ if st.session_state.current_view == "add":
                                     <div>
 """, unsafe_allow_html=True)
         elif search_term:
-             st.markdown("<div class = 'warning-message'> No books found matching your search.<.div>", unsafe_allow_html=True)
+             st.markdown("<div class = 'warning-message'> No books found matching your search.<.div>"), unsafe_allow_html=True
 
-elif st.session.current_view == "stats":
-    st.markdown("<h2 class='sub-header'> Library statistics</h2>", unsafe_allow_html=True)
+elif st.session_state.current_view == "stats":
+    st.markdown("<h2 class='sub-header'> Library statistics</h2>"), unsafe_allow_html=True
 
     if not st.session_state.library:
-        st.markdown("<div class='warning-message'> Your library si empty.Add somw books to see stats</div>", unsafe_allow_html=True)
+        st.markdown("<div class='warning-message'> Your library is empty.Add some books to see stats</div>"), unsafe_allow_html=True
     else:
         stats = get_library_stats()
         col1,col2, col3 = st.columns(3)
@@ -404,7 +404,7 @@ elif st.session.current_view == "stats":
             for author, count in top_authors.items():
                 st.markdown(f"**{author}**: {count} book{'s' if count > 1 else ''}")
     st.markdown("---")
-    st.markdown("copy right @ 2025  SYEDA BUSHRA ALI Personal Libraray Manager", unsafe_allow_html=True)
+    st.markdown("copy right @ 2025  SYEDA BUSHRA ALI Personal Libraray Manager"), unsafe_allow_html=True
              
 
     
