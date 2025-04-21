@@ -335,7 +335,7 @@ if st.session_state.current_view == "add":
                                     "Read" if book["raed-status"] else "unread"
                                 }</span></p>
                                 <div>
- """), unsafe_allow_html=True
+ """, unsafe_allow_html=True)
                     
                     col1, col2 = st.columns(2)
                     with col1:
