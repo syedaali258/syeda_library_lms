@@ -291,7 +291,7 @@ elif nav_options == "Library Statistics":
 
 st.markdown("<h1 class='main-header'> Personal Library Manager </h1>", unsafe_allow_html=True)
 if st.session_state.current_view == "add":
-    st.markdown("<h2 class='sub-header'>  Add a New Book</h2>"), unsafe_allow_html=True
+    st.markdown("<h2 class='sub-header'>  Add a New Book</h2>", unsafe_allow_html=True)
 
     #adding books input form
     with st.form(key='add_form_book'):
@@ -314,14 +314,14 @@ if st.session_state.current_view == "add":
             add_book(title,author,publication_year,genre,read_bool)
 
     if st.session_state.book_added:
-        st.markdown("<div class='success-message'> Book added successfully!</div>"), unsafe_allow_html=True
+        st.markdown("<div class='success-message'> Book added successfully!</div>", unsafe_allow_html=True)
         st.balloons()
         st.session_state.book_added = False
     elif st.session_state.current_view == "Library":
-        st.markdown("<h2 class='sub-header'> Your Library</h2>"), unsafe_allow_html=True
+        st.markdown("<h2 class='sub-header'> Your Library</h2>", unsafe_allow_html=True)
 
         if not st.session_state.library:
-            st.markdown("<div class='warning-message'> Your library is empty. Add some books to get started</div>"), unsafe_allow_html=True
+            st.markdown("<div class='warning-message'> Your library is empty. Add some books to get started</div>", unsafe_allow_html=True)
         else:
             cols = st.columns(2)
             for i , book in enumerate(st.session_state.library):
@@ -350,10 +350,10 @@ if st.session_state.current_view == "add":
                             save_library()
                             st.rerun()
         if st.session_state.book_removed:
-            st.markdown("div class='success-message'> Book removed successfully!</div>"), unsafe_allow_html=True
+            st.markdown("div class='success-message'> Book removed successfully!</div>", unsafe_allow_html=True)
             st.session_state.book_removed = False
         elif st.session_state.current_view == "search":
-            st.mardown("<h2 class='sub-header'> search books</h2>"), unsafe_allow_html=True
+            st.mardown("<h2 class='sub-header'> search books</h2>", unsafe_allow_html=True)
 
             search_by = st.selectbox("search by:", ["Title", "Author", "Genre"])
             search_term = st.text_input("Enter search term:")
@@ -365,7 +365,7 @@ if st.session_state.current_view == "add":
                         search_books(search_term, search_by)
             if hasattr(st.session_state, 'search_resulst'):
                 if st.session_state.search_results:
-                    st.markdown(f"<h3> Found{len(st.session_state.search_results)} results</h3>"), unsafe_allow_html=True
+                    st.markdown(f"<h3> Found{len(st.session_state.search_results)} results</h3>", unsafe_allow_html=True)
 
                     for i, book in enumerate(st.session_state.search_results):
                         st.markdown(f"""
@@ -380,13 +380,13 @@ if st.session_state.current_view == "add":
                                     <div>
 """, unsafe_allow_html=True)
         elif search_term:
-             st.markdown("<div class = 'warning-message'> No books found matching your search.<.div>"), unsafe_allow_html=True
+             st.markdown("<div class = 'warning-message'> No books found matching your search.<.div>", unsafe_allow_html=True)
 
 elif st.session_state.current_view == "stats":
     st.markdown("<h2 class='sub-header'> Library statistics</h2>"), unsafe_allow_html=True
 
     if not st.session_state.library:
-        st.markdown("<div class='warning-message'> Your library is empty.Add some books to see stats</div>"), unsafe_allow_html=True
+        st.markdown("<div class='warning-message'> Your library is empty.Add some books to see stats</div>", unsafe_allow_html=True)
     else:
         stats = get_library_stats()
         col1,col2, col3 = st.columns(3)
@@ -404,7 +404,7 @@ elif st.session_state.current_view == "stats":
             for author, count in top_authors.items():
                 st.markdown(f"**{author}**: {count} book{'s' if count > 1 else ''}")
     st.markdown("---")
-    st.markdown("copy right @ 2025  SYEDA BUSHRA ALI Personal Libraray Manager"), unsafe_allow_html=True
+    st.markdown("copy right @ 2025  SYEDA BUSHRA ALI Personal Libraray Manager", unsafe_allow_html=True)
              
 
     
