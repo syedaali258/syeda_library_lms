@@ -12,7 +12,7 @@ import requests
 
 #set page configuration
 st.set_page_config(
-    page_title="personal Library Management",
+    page_title="Personal Library Management",
     page_icon="🕮",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -270,15 +270,15 @@ def create_visulations(stats):
        
        #load library
 load_library()
-st.sidebar.markdown("h1 style='text-align: center;'> Navigation</h1>", unsafe_allow_html=True)
-lottie_book = load_lottieurl("https://assests9.lottieflies.com/temp/1f20_akAfIn.json")
+st.sidebar.markdown("<h1 style='text-align: center;'> Navigation</h1>", unsafe_allow_html=True)
+lottie_book = load_lottieurl("https://assets9.lottieflies.com/temp/1f20_akAfIn.json")
 if lottie_book:
     with st.sidebar:
         st_lottie(lottie_book, height=200, key='book_animation')
 
 nav_options = st.sidebar.radio(
     "choose an option:",
-    ["view Library", "Add Book", "search Books", "Library statistics"])
+    ["view Library", "Add Book", "Search Books", "Library Statistics"])
 
 if nav_options == "view Library":
     st.session_state.current_view = "library"
@@ -344,7 +344,7 @@ if st.session_state.current_view == "add":
                                 st.rerun()
                     with col2:
                         new_status = not book['read-status']
-                        status_label = "Matka as read" if not book ['read-status'] else "Mrak as unread"
+                        status_label = "Mark as read" if not book ['read-status'] else "Mark as unread"
                         if st.button(status_label, key=f"status_{i}", use_container_width=True):
                             st.session_state.lbrary[i]['read_status'] = new_status
                             save_library()
