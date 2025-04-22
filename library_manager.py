@@ -133,11 +133,11 @@ def save_library():
 #add a book to library
 def add_book(title,author,publication_year,genre,read_status):
     book = {
-        "title":title,
-        "author":author,
-        "publication_year": publication_year,
-        "genre": genre,
-        "read_status": read_status,
+        "title":"title",
+        "author":"author",
+        "publication_year": "publication_year",
+        "genre": "genre",
+        "read_status": "read_status",
         "added_date": datetime.datetime.now().strftime("%y-%m-%d %H:%M:%S")
     }
     st.session_state.library.append(book)
@@ -205,12 +205,12 @@ def get_library_stats():
             decades = dict(sorted(decades.items(), key= lambda x: x[0]))
 
             return {
-                'total books': total_books,
-                'read books' : read_books,
-                'percent read': percent_read,
-                'genres' : genres,
-                'authors' : authors,
-                'decades' : decades,
+                "total books": "total_books",
+                "read books" : "read_books",
+                "percent read": "percent_read",
+                "genres" : "genres",
+                "authors" : "authors",
+                "decades" : "decades",
             }
 
 
