@@ -383,7 +383,7 @@ if st.session_state.current_view == "add":
              st.markdown("<div class = 'warning-message'> No books found matching your search.<.div>", unsafe_allow_html=True)
 
 elif st.session_state.current_view == "stats":
-    st.markdown("<h2 class='sub-header'> Library statistics</h2>"), unsafe_allow_html=True
+    st.markdown("<h2 class='sub-header'> Library statistics</h2>", unsafe_allow_html=True)
 
     if not st.session_state.library:
         st.markdown("<div class='warning-message'> Your library is empty.Add some books to see stats</div>", unsafe_allow_html=True)
