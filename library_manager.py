@@ -289,7 +289,7 @@ elif nav_options == "Search Books":
 elif nav_options == "Library Statistics":
     st.session_state.current_view = "stats"
 
-st.markdown("<h1 class='main-header'> Personal Libraray Manager </h1>"), unsafe_allow_html=True
+st.markdown("<h1 class='main-header'> Personal Library Manager </h1>", unsafe_allow_html=True)
 if st.session_state.current_view == "add":
     st.markdown("<h2 class='sub-header'>  Add a New Book</h2>"), unsafe_allow_html=True
 
