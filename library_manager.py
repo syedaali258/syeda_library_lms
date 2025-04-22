@@ -270,7 +270,7 @@ def create_visulations(stats):
        
        #load library
 load_library()
-st.sidebar.markdown("h1 style='text-align: center;'> Navigation</h1>"), unsafe_allow_html=True
+st.sidebar.markdown("h1 style='text-align: center;'> Navigation</h1>", unsafe_allow_html=True)
 lottie_book = load_lottieurl("https://assests9.lottieflies.com/temp/1f20_akAfIn.json")
 if lottie_book:
     with st.sidebar:
